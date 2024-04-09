@@ -16,11 +16,11 @@ public partial class iletisim : System.Web.UI.Page
 
     protected void Button1_Click(object sender, EventArgs e)
     {
-        SqlCommand komut = new SqlCommand("insert into table_mesajlar(mesajgonderen,mesajbaslik,mesajmail,mesajicerik) values (@p4,@p1,@p2,@p3)", bgl.baglanti());
-        komut.Parameters.AddWithValue("@p4", TxtGonderen.Text);
-        komut.Parameters.AddWithValue("@p1", TxtBaslik.Text);
-        komut.Parameters.AddWithValue("@p2", TxtMail.Text);
-        komut.Parameters.AddWithValue("@p3", TxtMesaj.Text);
+        SqlCommand komut = new SqlCommand("insert into table_mesajlar(mesajgonderen,mesajbaslik,mesajmail,mesajicerik) values (@p1,@p2,@p3,@p4)", bgl.baglanti());
+        komut.Parameters.AddWithValue("@p1", TxtGonderen.Text);
+        komut.Parameters.AddWithValue("@p2", TxtBaslik.Text);
+        komut.Parameters.AddWithValue("@p3", TxtMail.Text);
+        komut.Parameters.AddWithValue("@p4", TxtMesaj.Text);
         komut.ExecuteNonQuery();
         bgl.baglanti().Close();
     }

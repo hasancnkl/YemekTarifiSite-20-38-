@@ -16,7 +16,7 @@ public partial class TarıfOner : System.Web.UI.Page
 
     protected void BtnTraifOner_Click(object sender, EventArgs e)
     {
-        SqlCommand komut = new SqlCommand("Insert into Table_Tarifiler (TraifAd,TraifMalzeme,TraifYaplis,TraifResim,TarifSahaip,TarifSahipMail) values(@t1,@t2,@t3,@t4,@t5,@t6)",bgl.baglanti());
+        SqlCommand komut = new SqlCommand("Insert into Table_Tarifiler (TarifAd,TarifMalzeme,TarifYaplis,TariffResim,TarifSahip,TarifSahipMail) values(@t1,@t2,@t3,@t4,@t5,@t6)",bgl.baglanti());
         komut.Parameters.AddWithValue("@t1",TxtTarifAd.Text);
         komut.Parameters.AddWithValue("@t2",TxtMalzemler.Text);
         komut.Parameters.AddWithValue("@t3",TxtYapis.Text);
@@ -25,7 +25,7 @@ public partial class TarıfOner : System.Web.UI.Page
         komut.Parameters.AddWithValue("@t6",TxtMailAdresi.Text);
         komut.ExecuteNonQuery();
         bgl.baglanti().Close();
-        Response.Write("Traifiniz Alınmıştır");
+        Response.Write("Tarifiniz Alınmıştır");
 
     }
 }

@@ -7,8 +7,8 @@
             width: 155px;
         }
         .auto-style28 {
-            text-align: center;
-        }
+        text-align: center;
+    }
         .auto-style29 {
             width: 155px;
         }
@@ -46,13 +46,21 @@
             </td>
         </tr>
         <tr>
-            <td class="auto-style29">&nbsp;</td>
-            <td>&nbsp;</td>
+            <td class="auto-style27">YEMEK GORUNTU:</td>
+            <td>
+                <asp:FileUpload ID="FileUpload1" runat="server" Width="250px" />
+            </td>
         </tr>
         <tr>
             <td class="auto-style29">&nbsp;</td>
             <td class="auto-style28">
                 <asp:Button ID="Button1" runat="server" Text="GÜNCELLE" OnClick="Button1_Click" />
+            </td>
+        </tr>
+        <tr>
+            <td class="auto-style29">&nbsp;</td>
+            <td class="auto-style28">
+                <asp:Button ID="Button2" runat="server" OnClick="Button2_Click1" Text="GUNUN YEMEGI SEC" />
             </td>
         </tr>
     </table>

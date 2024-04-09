@@ -46,14 +46,19 @@ public partial class YemekDuzenle : System.Web.UI.Page
 
     protected void Button1_Click(object sender, EventArgs e)
     {
+
+        
         using (SqlConnection conn = bgl.baglanti())
         {
+            FileUpload1.SaveAs(Server.MapPath("/resimler/" + FileUpload1.FileName));
+
             int id = Convert.ToInt32(Request.QueryString["Yemekid"]);
-            SqlCommand komut = new SqlCommand("UPDATE Table_Yemekler SET Yemekad=@p1, YemekMalzeme=@p2, YemekTarif=@p3, kategoriid=@p4 WHERE Yemekid=@p5", conn);
+            SqlCommand komut = new SqlCommand("UPDATE Table_Yemekler SET Yemekad=@p1, YemekMalzeme=@p2, YemekTarif=@p3, kategoriid=@p4, YemekResim=@p6 WHERE Yemekid=@p5", conn);
             komut.Parameters.AddWithValue("@p1", TextBox1.Text);
             komut.Parameters.AddWithValue("@p2", TextBox2.Text);
             komut.Parameters.AddWithValue("@p3", TextBox3.Text);
             komut.Parameters.AddWithValue("@p4", DropDownList1.SelectedValue);
+            komut.Parameters.AddWithValue("@p6", "/resimler/"+FileUpload1.FileName);
             komut.Parameters.AddWithValue("@p5", id);
 
             komut.ExecuteNonQuery();
@@ -64,5 +69,32 @@ public partial class YemekDuzenle : System.Web.UI.Page
 
         bgl.baglanti().Close();
     }
+    protected void Button2_Click(object sender, EventArgs e)
+    {
+        using (SqlConnection conn = bgl.baglanti())
+        {
+            SqlCommand komut = new SqlCommand("UPDATE Table_Yemekler SET Durum = 0", conn);
+            komut.ExecuteNonQuery();
+        }
+    }
 
+
+
+    protected void Button2_Click1(object sender, EventArgs e)
+    {
+              //YEMEK DURUMUNU FALSE YAPAR
+                SqlCommand komut = new SqlCommand("UPDATE Table_Yemekler SET Durum = 0",bgl.baglanti());
+                komut.ExecuteNonQuery();
+                 bgl.baglanti().Close();
+
+        //GUNUN YEMEGI ICIN ID YE GORE TRUE YAPAR
+        SqlCommand komut2 = new SqlCommand("UPDATE Table_Yemekler SET Durum = 1 where yemekid=@p1", bgl.baglanti());
+        komut2.Parameters.AddWithValue("@p1", id);
+        komut2.ExecuteNonQuery();
+        bgl.baglanti().Close();
+
+
+
+
+    }
 }

@@ -13,7 +13,7 @@ public partial class Gunuyemegi : System.Web.UI.Page
     sqlsınıf bgl = new sqlsınıf();
     protected void Page_Load(object sender, EventArgs e)
     {
-        SqlCommand komut = new SqlCommand("SELECT * FROM Table_GununYemegi", bgl.baglanti());
+        SqlCommand komut = new SqlCommand("SELECT * FROM Table_Yemekler where durum=1", bgl.baglanti());
         SqlDataReader oku = komut.ExecuteReader();
         DataList2.DataSource = oku;
         DataList2.DataBind();
